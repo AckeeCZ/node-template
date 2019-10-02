@@ -1,0 +1,54 @@
+
+# Group Images Collection
+
+## /api/v1/images{?status,priority}
+
++ Parameters
+    + status (string)
+    + priority (number) - query param
+
+### List [GET]
+
++ Response 200 (application/json)
+
+### Create [POST]
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Basic ABCDEF
+
+    + Attributes(Images.Create, fixed-type)
+
++ Response 200 (application/json)
+    + Attributes(Images.Created, fixed-type)
+
++ Response 201 (application/json)
+    + Attributes(Images.Created, fixed-type)
+
++ Response 404 (application/json)
+
+### Update [PUT]
+
+You will not see a request example for this one, because it does not have an `application/json` content type.
+
++ Request
+
+    + Attributes(Images.Create, fixed-type)
+
++ Response 200 (application/json)
+
+## Delete Image [DELETE /images/{id}]
+
++ Parameters
+    + id (enum[string])
+
+        Id of a Post - path parameter
+
+        + Members
+            + `A`
+            + `B`
+            + `C`
+
++ Response 204

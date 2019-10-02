@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Template (System) Errors Responds to toJson as expected 1`] = `
+Object {
+  "errorClass": "ServerError",
+  "errorCode": "Unicorn cries",
+  "errorData": Object {
+    "data": true,
+  },
+  "message": "TEMPLATE_TEST",
+  "stack": StringContaining "at",
+  "status": 500,
+}
+`;
+
+exports[`Template (System) Errors Works without error code 1`] = `
+Object {
+  "errorClass": "ServerError",
+  "errorCode": "",
+  "errorData": undefined,
+  "message": "",
+  "stack": StringContaining "at",
+  "status": 500,
+}
+`;
