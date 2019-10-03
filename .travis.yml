@@ -1,4 +1,8 @@
 language: node_js
+
+env:
+  - ENABLE_TESTS=true
+
 node_js:
   - '12'
 
