@@ -1,4 +1,4 @@
-import { createRouter } from 'ackee-node-api-core';
+import { createRouter } from 'unicore';
 
 import * as helloController from '../controllers/api/helloController';
 

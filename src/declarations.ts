@@ -1,18 +1,6 @@
 // Typing for untyped variables
 // Needs to be global-scoped in a non-module (module is something with at least one import/export)
 
-declare module 'ackee-node-api-core' {
-    import { Application, RequestHandler, Router } from 'express';
-    interface XApplication {
-        listen: (port: number) => Promise<any>;
-    }
-    export function createRouter(): Router;
-    export function createServer(): XApplication & Application;
-    export const defaultFinalHandler: RequestHandler;
-    export const defaultRootHandler: RequestHandler;
-    export function jsonParser(): any;
-}
-
 declare module 'ackee-node-logger' {
     interface LogFunction {
         (message?: string): void;
