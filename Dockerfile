@@ -1,5 +1,5 @@
 # BUILDER IMAGE
-FROM node:10.14.0 AS builder
+FROM node:12.10.0 AS builder
 ENV NODE_PATH=.
 ENV JOBS="max"
 WORKDIR /usr/src/app
@@ -16,7 +16,7 @@ RUN npm ci
 RUN npm run app:compile
 
 # MAIN IMAGE
-FROM node:10.14.0
+FROM node:12.10.0
 ENV NODE_PATH=./config:./app
 WORKDIR /usr/src/app
 COPY --from=builder /usr/src/app /usr/src/app
