@@ -23,7 +23,9 @@
     "cover": "npm run app:test -- --collectCoverage",
     "check": "npm-check -i app -i errors -i config -i index; exit 0",
     "check-win": "npm-check -i app -i errors -i config -i index & exit 0",
-    "pretty": "prettier --write \"src/**/*.ts\""
+    "pretty": "prettier --write \"src/**/*.ts\"",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "jest-junit": {
     "outputDirectory": "output",
@@ -43,7 +45,8 @@
     "node-healthz": "^1.0.1",
     "npm-run-series": "^1.0.1",
     "source-map-support": "^0.5.13",
-    "unicore": "^0.1.9"
+    "unicore": "^0.1.9",
+    "snyk": "^1.230.5"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.2.0",
@@ -69,5 +72,6 @@
     "tslint": "^5.20.0",
     "tslint-config-ackee": "^0.3.0",
     "typescript": "^3.6.3"
-  }
+  },
+  "snyk": true
 }
