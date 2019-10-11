@@ -1,6 +1,5 @@
-import logger from 'app/logger';
-import config, { safeConfig } from 'config';
-import server from './server';
+import logger from './app/logger';
+import config, { safeConfig } from './config';
 
 logger.info(safeConfig, 'Loaded config');
 server

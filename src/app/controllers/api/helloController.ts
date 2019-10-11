@@ -1,4 +1,4 @@
-import * as helloService from 'app/services/helloService';
+import * as helloService from '../../services/helloService';
 import { bindContext, pipeMiddleware, respond } from '../utils/controllerUtils';
 
 export const anyHello = pipeMiddleware(

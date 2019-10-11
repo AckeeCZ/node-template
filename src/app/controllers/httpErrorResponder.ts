@@ -1,5 +1,5 @@
-import { HttpJsonError } from 'app/errors/coreClasses';
 import { NextFunction, Request, Response } from 'express';
+import { HttpJsonError } from '../../app/errors/coreClasses';
 
 const httpErrorResponder = (error: HttpJsonError, _req: Request, res: Response, _next: NextFunction) => {
     res.status(error.status || 500);
