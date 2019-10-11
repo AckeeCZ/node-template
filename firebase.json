@@ -1,0 +1,9 @@
+{
+    "functions": {
+        "predeploy": [
+            "npm run app:compile",
+            "node ./.template.cfSetup.js"
+        ],
+        "source": "dist"
+    }
+}
