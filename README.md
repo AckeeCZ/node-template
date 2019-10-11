@@ -37,7 +37,8 @@ Simulator takes it's time to start and is harder to debug. To ease the developme
 ### Deploy serverless
 
 - `firebase deploy`
- 
+
+⚠️ `/healthz` doesn't work when deployed. Looks like a bug in [healthz](https://github.com/smoliji/node-healthz).
 
 Want to know more? See [getting started](./docs/getting-started.md).
 
