@@ -4,7 +4,11 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { Level } from 'pino';
 
-const PROJECT_ROOT = path.join(__dirname, '..', '..');
+// ProjectRoot for different envs to support top level src in cloud functions.
+// For CF env, dist is root, otherwise normal project root.
+// Descision is based on automatically set variable for CF.
+// See https://cloud.google.com/functions/docs/env-var#environment_variables_set_automatically
+const PROJECT_ROOT = process.env.FUNCTION_TARGET ? path.join(__dirname, '..') : path.join(__dirname, '..', '..');
 const loaderOptions = {
     // All options must be specified, including defaults
     // See https://github.com/AckeeCZ/configuru/issues/10

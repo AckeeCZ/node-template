@@ -11,7 +11,8 @@
  * 
  * HOW. Result needs to be (a) {compiled}/package.json with it's (b) main
  * property pointing to the CF bootstrap file, in the docs referred to
- * as 'main source file for your Cloud Function'.
+ * as 'main source file for your Cloud Function'. (c) copy all necessary files
+ * from project root to dist - .env.json etc.
  */
 const path = require('path');
 const fs = require('fs');
@@ -62,4 +63,26 @@ const File = {
     contents.main = functionsIndex;
     fs.writeFileSync(File.CompiledPackageJson, JSON.stringify(contents, null, 2));
     logger.info(`OK ${path.relative(Dir.Root, File.CompiledPackageJson)}.main=${functionsIndex}`);
+})();
+
+// (c) Copy configuration files
+(() => {
+    const files = [
+        '.env.json',
+        'credentials.json',
+    ];
+    files.forEach(fileName => {
+        const file = path.join(Dir.Root, fileName);
+        const destination = path.join(Dir.Compiled, path.basename(fileName));
+        if (fs.existsSync(file)) {
+            logger.info([
+                'Copying',
+                file,
+                'to',
+                path.relative(file, destination),
+            ].join(' '));
+            fs.copyFileSync(file, destination)
+            logger.info(`OK. Copied ${fileName}.`);
+        }
+    });
 })();
