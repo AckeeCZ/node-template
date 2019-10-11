@@ -17,7 +17,6 @@ RUN npm run app:compile
 
 # MAIN IMAGE
 FROM node:12.10.0
-ENV NODE_PATH=./config:./app
 WORKDIR /usr/src/app
 COPY --from=builder /usr/src/app /usr/src/app
 EXPOSE 3000
