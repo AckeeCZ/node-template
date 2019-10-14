@@ -20,9 +20,11 @@ Ackee node back-end project template
 - `npm install`
 - `firebase emulators:start` to [Run functions locally
 ](https://firebase.google.com/docs/functions/local-emulator)
-- Visit emulated functions on proposed addreses, which may look like [`http://localhost:5001/{firebase_project}/{region}/healthz`](http://localhost:5001/{firebase_project}/{region}/healthz) or [`http://localhost:5001/{firebase_project}/{region}/api/hello`](http://localhost:5001/{firebase_project}/{region}/api/hello)
+- Visit emulated functions on proposed addreses, which may look like [`http://localhost:5001/{firebase_project}/{region}/healthz/healthz`](http://localhost:5001/{firebase_project}/{region}/healthz/healthz) or [`http://localhost:5001/{firebase_project}/{region}/api/hello`](http://localhost:5001/{firebase_project}/{region}/api/hello)
 
 ⚠️ Local development only.
+
+⚠️ The double `/healthz/healthz` because the function name is `healthz` and the handler responds to routes starting with [`healthz`](https://github.com/smoliji/node-healthz/issues/1).
 
 ### Start server
 
@@ -37,8 +39,6 @@ Simulator takes it's time to start and is harder to debug. To ease the developme
 ### Deploy serverless
 
 - `firebase deploy`
-
-⚠️ `/healthz` doesn't work when deployed. Looks like a bug in [healthz](https://github.com/smoliji/node-healthz).
 
 Want to know more? See [getting started](./docs/getting-started.md).
 
