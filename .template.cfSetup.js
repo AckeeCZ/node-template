@@ -19,50 +19,50 @@ const fs = require('fs');
 
 const logger = console;
 
-const Dir = {
+const DIR = {
     // Project root location
-    Root: __dirname,
+    ROOT: __dirname,
     // Compiled sources location
-    Compiled: path.join(__dirname, 'dist'),
+    COMPILED: path.join(__dirname, 'dist'),
 }
 
-const File = {
+const FILE = {
     // Real package.json
-    PackageJson: path.join(Dir.Root, 'package.json'),
+    PACKAGE_JSON: path.join(DIR.ROOT, 'package.json'),
     // To-be-created package.json clone. Slightly modified.
-    CompiledPackageJson: path.join(Dir.Compiled, 'package.json'),
+    COMPILED_PACKAGE_JSON: path.join(DIR.COMPILED, 'package.json'),
     // Cloud functions bootstrap file
-    FunctionsIndex: path.join(Dir.Compiled, 'index.js'),
+    FUNCTIONS_INDEX: path.join(DIR.COMPILED, 'index.js'),
 };
 
 // (a) Copy ./package.json to {compiled}/package.json
 (() => {
     logger.info([
         'Copying',
-        path.relative(Dir.Root, File.PackageJson),
+        path.relative(DIR.ROOT, FILE.PACKAGE_JSON),
         'to',
-        path.relative(Dir.Root, File.CompiledPackageJson),
+        path.relative(DIR.ROOT, FILE.COMPILED_PACKAGE_JSON),
     ].join(' '))
-    fs.copyFileSync(File.PackageJson, File.CompiledPackageJson);
-    logger.info(`OK created ${path.relative(Dir.Root, File.CompiledPackageJson)}`);
+    fs.copyFileSync(FILE.PACKAGE_JSON, FILE.COMPILED_PACKAGE_JSON);
+    logger.info(`OK created ${path.relative(DIR.ROOT, FILE.COMPILED_PACKAGE_JSON)}`);
 })();
 
 // (b) Add `main` to {compiled}/package.json
 (() => {
     const functionsIndex = path.relative(
-        Dir.Compiled,
-        File.FunctionsIndex
+        DIR.COMPILED,
+        FILE.FUNCTIONS_INDEX
     );
     logger.info([
         'Modifying',
-        `${path.relative(Dir.Root, File.CompiledPackageJson)}'s`,
+        `${path.relative(DIR.ROOT, FILE.COMPILED_PACKAGE_JSON)}'s`,
         '\'main\' property to',
         `'${functionsIndex}'`,
     ].join(' '));
-    const contents = JSON.parse(fs.readFileSync(File.CompiledPackageJson, 'utf8'));
+    const contents = JSON.parse(fs.readFileSync(FILE.COMPILED_PACKAGE_JSON, 'utf8'));
     contents.main = functionsIndex;
-    fs.writeFileSync(File.CompiledPackageJson, JSON.stringify(contents, null, 2));
-    logger.info(`OK ${path.relative(Dir.Root, File.CompiledPackageJson)}.main=${functionsIndex}`);
+    fs.writeFileSync(FILE.COMPILED_PACKAGE_JSON, JSON.stringify(contents, null, 2));
+    logger.info(`OK ${path.relative(DIR.ROOT, FILE.COMPILED_PACKAGE_JSON)}.main=${functionsIndex}`);
 })();
 
 // (c) Copy configuration files
@@ -72,8 +72,8 @@ const File = {
         'credentials.json',
     ];
     files.forEach(fileName => {
-        const file = path.join(Dir.Root, fileName);
-        const destination = path.join(Dir.Compiled, path.basename(fileName));
+        const file = path.join(DIR.ROOT, fileName);
+        const destination = path.join(DIR.COMPILED, path.basename(fileName));
         if (fs.existsSync(file)) {
             logger.info([
                 'Copying',
