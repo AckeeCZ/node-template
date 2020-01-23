@@ -1,7 +1,9 @@
 import { createLoader, safeValues, values } from 'configuru';
 import { Level } from 'pino';
 
-const loader = createLoader();
+const loader = createLoader({
+    defaultConfigPath: '.env.jsonc',
+});
 
 const configSchema = {
     logger: {
