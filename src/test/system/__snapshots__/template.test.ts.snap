@@ -3,11 +3,11 @@
 exports[`Template (System) Errors Responds to toJson as expected 1`] = `
 Object {
   "errorClass": "ServerError",
-  "errorCode": "Unicorn cries",
+  "errorCode": "UNKNOWN",
   "errorData": Object {
     "data": true,
   },
-  "message": "TEMPLATE_TEST",
+  "message": "Unknown error",
   "stack": StringContaining "at",
   "status": 500,
 }
@@ -16,9 +16,9 @@ Object {
 exports[`Template (System) Errors Works without error code 1`] = `
 Object {
   "errorClass": "ServerError",
-  "errorCode": "",
+  "errorCode": "?",
   "errorData": undefined,
-  "message": "",
+  "message": "Server error",
   "stack": StringContaining "at",
   "status": 500,
 }
