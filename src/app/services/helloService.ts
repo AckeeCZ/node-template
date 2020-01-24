@@ -1,4 +1,4 @@
-import { HttpContext } from 'app/controllers/utils/httpContext';
+import { HttpContext } from '../controllers/utils/httpContext';
 
 export const hello = (context: HttpContext) => {
     return Promise.resolve({ hello: 'World', payload: context.payload });
