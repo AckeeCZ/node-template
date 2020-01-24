@@ -9,20 +9,20 @@ describe('Template (System)', () => {
     describe('Errors', () => {
         test('Throws', () => {
             expect(() => {
-                throw new ServerError(E_CODES.TEMPLATE_TEST);
+                throw new ServerError(E_CODES.UNKNOWN);
             }).toThrow(ServerError);
         });
         test('Throws with correct name', () => {
             let name = '';
             try {
-                throw new ServerError(E_CODES.TEMPLATE_TEST);
+                throw new ServerError(E_CODES.UNKNOWN);
             } catch (e) {
                 name = e.name;
             }
             expect(name).toBe('ServerError');
         });
         test('Responds to toJson as expected', () => {
-            expect(new ServerError(E_CODES.TEMPLATE_TEST, { data: true }).toJSON()).toMatchSnapshot({
+            expect(new ServerError(E_CODES.UNKNOWN, { data: true }).toJSON()).toMatchSnapshot({
                 stack: expect.stringContaining('at'),
             });
         });

@@ -1,13 +1,6 @@
-import { mapValues } from 'lodash';
+// Assure code is same as key in the object
+const checkErrors = <T extends { [X in keyof T]: { code: X; message: string } }>(errors: T) => errors;
 
-enum ErrorCodes {
-    TEMPLATE_TEST = 'Unicorn cries',
-    e0000 = "I'm a teapot",
-    e2 = '',
-}
-
-// Type hacking for simplified error notation and code suggestions
-export const E_CODES = (mapValues(
-    ErrorCodes,
-    (message: string, code: string): any => ({ message, code })
-) as any) as typeof ErrorCodes;
+export const E_CODES = checkErrors({
+    UNKNOWN: { code: 'UNKNOWN', message: 'Unknown error' },
+} as const);
