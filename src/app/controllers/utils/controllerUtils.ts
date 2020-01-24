@@ -6,7 +6,7 @@ import httpContext from './httpContext';
 type Handler = (req: Request, res: Response, next: NextFunction) => any;
 type SimpleHandler = (req: Request, res: Response) => any;
 type WriteResponse = (req: Request, res: Response, data?: any) => any;
-const writeResponse: WriteResponse = (_req, res, data) => res.json(data);
+const writeResponse: WriteResponse = (_, res, data) => res.json(data);
 
 const respond = (
     controllerHandler: SimpleHandler,

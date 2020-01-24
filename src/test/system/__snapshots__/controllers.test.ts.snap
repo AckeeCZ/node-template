@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Controller utils meTranslate Translates params and query, including arrays 1`] = `
+Object {
+  "params": Object {
+    "id": 123,
+  },
+  "query": Object {
+    "arr": Array [
+      123,
+      "they",
+    ],
+    "bar": "he",
+    "baz": "metoo",
+    "foo": 123,
+  },
+}
+`;
+
+exports[`Controller utils omit omitOrder 1`] = `
+Object {
+  "foo": true,
+  "limit": 0,
+  "offset": 0,
+}
+`;
+
+exports[`Controller utils omit omitPagination 1`] = `
+Object {
+  "foo": true,
+  "order": "asc",
+}
+`;
+
+exports[`Controller utils respond Calls handler and default writer saves result to response 1`] = `
+Object {
+  "good": true,
+}
+`;
+
+exports[`Controller utils respond Custom writer 1`] = `
+Object {
+  "data": Object {
+    "good": true,
+  },
+}
+`;
