@@ -14,7 +14,6 @@ export interface HttpContext<User = DefaultUser> {
         limit: number;
         offset: number;
     };
-    order: string;
     locale?: string;
     params: {
         [key: string]: string;
@@ -51,9 +50,6 @@ const createHttpContext = <User = DefaultUser>(httpContext: { req: Request; res:
         },
         get pagination() {
             return pagination;
-        },
-        get order() {
-            return req.query.order;
         },
         get locale() {
             if (req && req.i18n) {
