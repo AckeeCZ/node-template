@@ -8,7 +8,7 @@ import {
     omitPagination,
     pipeMiddleware,
     respond,
-} from '../../app/controllers/utils/controllerUtils';
+} from '../../controllers/utils/controllerUtils';
 
 let app: express.Express;
 const resetExpress = () => {

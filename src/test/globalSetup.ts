@@ -1,4 +1,4 @@
-import logger from '../app/components/logger';
+import logger from '../components/logger';
 import config, { safeConfig } from '../config';
 
 export default () => {

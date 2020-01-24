@@ -1,6 +1,6 @@
-import { E_CODES } from '../../app/errors';
-import { ServerError } from '../../app/errors/classes';
 import config from '../../config';
+import { E_CODES } from '../../errors';
+import { ServerError } from '../../errors/classes';
 
 describe('Template (System)', () => {
     test('Configuration is loaded', () => {

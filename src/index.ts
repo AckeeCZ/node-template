@@ -1,6 +1,6 @@
-import logger from './app/components/logger';
+import logger from './components/logger';
 import config, { safeConfig } from './config';
-import server from './server';
+import server from './server/server';
 
 logger.info(safeConfig, 'Loaded config');
 server
