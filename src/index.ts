@@ -4,7 +4,7 @@ import server from './server';
 
 logger.info(safeConfig, 'Loaded config');
 server
-    .listen(config.server.port)
+    .listenAsync(config.server.port)
     .then(() => logger.info(`Server started, port=${config.server.port}`))
     .catch((error: Error) => {
         logger.error(`Server failed to start: ${error.stack}`);

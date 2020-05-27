@@ -1,5 +1,5 @@
 # BUILDER IMAGE
-FROM node:12.10.0 AS builder
+FROM node:12.16.3-buster AS builder
 ENV JOBS="max"
 WORKDIR /usr/src/app
 # important, otherwise postinstall hook fails
@@ -15,7 +15,7 @@ RUN npm ci
 RUN npm run build
 
 # MAIN IMAGE
-FROM node:12.10.0
+FROM node:12.16.3-buster
 WORKDIR /usr/src/app
 COPY --from=builder /usr/src/app /usr/src/app
 EXPOSE 3000
