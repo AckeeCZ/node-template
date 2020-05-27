@@ -1,4 +1,4 @@
-import { sum } from 'app/services/helloService';
+import { sum } from '../../app/services/helloService';
 
 describe('Hello', () => {
     test('Sum', () => {

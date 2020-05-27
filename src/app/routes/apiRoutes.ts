@@ -1,7 +1,7 @@
 import { createRouter } from 'unicore';
 
-import { baseController } from 'app/controllers/api/genericControllers';
-import { hello } from 'app/services/helloService';
+import { baseController } from '../controllers/api/genericControllers';
+import { hello } from '../services/helloService';
 
 const router = createRouter();
 

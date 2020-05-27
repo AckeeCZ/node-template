@@ -1,6 +1,6 @@
 import * as request from 'supertest-as-promised';
 
-import app from 'server';
+import app from '../../server';
 
 describe('Template (Integration)', () => {
     describe('Server', () => {

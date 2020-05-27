@@ -24,7 +24,6 @@ Here is a quick snippet to make the debug working. Mind the following:
             ],
             "env": {
                 "NODE_ENV": "development",
-                "NODE_PATH": "dist",
                 "CFG_JSON_PATH": "path/to/local/.env",
             },
             "console": "internalConsole",
