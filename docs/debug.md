@@ -18,7 +18,7 @@ Here is a quick snippet to make the debug working. Mind the following:
             "stopOnEntry": false,
             "args": [],
             "cwd": "${workspaceRoot}",
-            "preLaunchTask": "npm: app:compile",
+            "preLaunchTask": "npm: build",
             "runtimeArgs": [
                 "-r", "source-map-support/register"
             ],

@@ -12,7 +12,7 @@ COPY src ./src
 # install dependencies first
 RUN npm ci
 # now compile typescript
-RUN npm run app:compile
+RUN npm run build
 
 # MAIN IMAGE
 FROM node:12.10.0

@@ -10,17 +10,15 @@
     "node": "^12.10.0"
   },
   "scripts": {
-    "start": "npm run app:start",
+    "build": "tsc",
+    "start": "node -r source-map-support/register dist/index.js",
     "start-lr": "tsc-watch --onSuccess \"npm run start\"",
-    "test": "npm run app:test",
-    "test-lr": "npm run app:test -- --watch",
-    "app:compile": "tsc",
-    "app:start": "node -r source-map-support/register dist/index.js",
-    "app:test": "jest --detectOpenHandles --forceExit",
+    "test": "jest --colors --detectOpenHandles --forceExit",
+    "test-lr": "npm run test -- --watch",
+    "cover": "npm run test -- --collectCoverage",
     "ci-test": "npm run cover -- --reporters=default --reporters=jest-junit --ci",
     "ci-lint": "tslint -p . --force -t checkstyle -o ./output/checkstyle-result.xml",
     "lint": "tslint -p . -t codeFrame",
-    "cover": "npm run app:test -- --collectCoverage",
     "check": "npm-check -i app -i errors -i config -i index; exit 0",
     "check-win": "npm-check -i app -i errors -i config -i index & exit 0",
     "pretty": "prettier --write \"src/**/*.ts\""
