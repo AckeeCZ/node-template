@@ -17,19 +17,11 @@ Set custom configuration for the project. See [configuration](./config.md) for m
 
 ## :rocket: Run
 #### Production
+```bash
+npm start # prod
+npm run start-lr # dev live-reload
 ```
-npm start
-```
-Start does not perform a static TypeScript type check. For performance boost, it only transpiles the code on start.
-
- - App uses `ts-node` for runtime and does not require compiled javascript, because it transpiles on the fly.
- - You can trigger the TS check manually via `npm run build`, which does not emit any code
-
-#### Development
-```
-npm start-lr
-```
-This starts dev server with auto-reload. Typescript type errors are reported in contrast to production start.
+This starts dev server with auto-reload. Typescript type errors are reported. You can trigger build manually with `npm run build`.
 
 
 ## :heavy_check_mark: Test
