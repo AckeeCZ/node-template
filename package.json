@@ -7,7 +7,7 @@
     "Jaroslav Šmolík <grissius@gmail.com>"
   ],
   "engines": {
-    "node": "^12.10.0"
+    "node": "^12.16.3"
   },
   "scripts": {
     "build": "tsc",
