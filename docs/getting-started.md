@@ -23,7 +23,7 @@ npm start
 Start does not perform a static TypeScript type check. For performance boost, it only transpiles the code on start.
 
  - App uses `ts-node` for runtime and does not require compiled javascript, because it transpiles on the fly.
- - You can trigger the TS check manually via `npm run app:compile`, which does not emit any code
+ - You can trigger the TS check manually via `npm run build`, which does not emit any code
 
 #### Development
 ```

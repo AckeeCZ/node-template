@@ -13,7 +13,7 @@
     "build": "tsc",
     "start": "node -r source-map-support/register dist/index.js",
     "start-lr": "tsc-watch --onSuccess \"npm run start\"",
-    "test": "jest --detectOpenHandles --forceExit",
+    "test": "jest --colors --detectOpenHandles --forceExit",
     "test-lr": "npm run test -- --watch",
     "cover": "npm run test -- --collectCoverage",
     "ci-test": "npm run cover -- --reporters=default --reporters=jest-junit --ci",
