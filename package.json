@@ -32,7 +32,6 @@
     "usePathForSuiteName": "true"
   },
   "dependencies": {
-    "compose-middleware": "^5.0.1",
     "configuru": "^0.4.0",
     "cosmas": "^2.0.0-beta.6",
     "lodash": "^4.17.15",
