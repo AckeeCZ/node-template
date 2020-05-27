@@ -1,6 +1,5 @@
 # BUILDER IMAGE
 FROM node:12.10.0 AS builder
-ENV NODE_PATH=.
 ENV JOBS="max"
 WORKDIR /usr/src/app
 # important, otherwise postinstall hook fails
@@ -17,7 +16,6 @@ RUN npm run app:compile
 
 # MAIN IMAGE
 FROM node:12.10.0
-ENV NODE_PATH=./config:./app
 WORKDIR /usr/src/app
 COPY --from=builder /usr/src/app /usr/src/app
 EXPOSE 3000

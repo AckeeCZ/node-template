@@ -1,5 +1,5 @@
-import logger from 'app/logger';
-import config, { safeConfig } from 'config';
+import logger from '../app/logger';
+import config, { safeConfig } from '../config';
 
 export default () => {
     logger.info(safeConfig);

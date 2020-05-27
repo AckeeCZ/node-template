@@ -1,3 +1,6 @@
+import * as bodyParser from 'body-parser';
+import * as express from 'express';
+import * as request from 'supertest-as-promised';
 import {
     bindContext,
     meTranslate,
@@ -5,10 +8,7 @@ import {
     omitPagination,
     pipeMiddleware,
     respond,
-} from 'app/controllers/utils/controllerUtils';
-import * as bodyParser from 'body-parser';
-import * as express from 'express';
-import * as request from 'supertest-as-promised';
+} from '../../app/controllers/utils/controllerUtils';
 
 let app: express.Express;
 const resetExpress = () => {
