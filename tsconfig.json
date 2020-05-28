@@ -1,8 +1,5 @@
-
 {
-  "include": [
-    "src/**/*"
-  ],
+  "include": ["src/**/*"],
   "compilerOptions": {
     "target": "ES2019",
     "module": "CommonJS",
@@ -14,6 +11,6 @@
     "outDir": "dist",
     "rootDir": "src",
     "strict": true,
-    "moduleResolution": "node",
+    "moduleResolution": "node"
   }
 }

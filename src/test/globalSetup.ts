@@ -1,10 +1,12 @@
-import logger from '../app/logger';
-import config, { safeConfig } from '../config';
+import logger from '../app/logger'
+import config, { safeConfig } from '../config'
 
 export default () => {
-    logger.info(safeConfig);
+  logger.info(safeConfig)
 
-    if (!config.enableTests) {
-        throw Error('Tests are disabled. Please set "ENABLE_TESTS" configuration variable.');
-    }
-};
+  if (!config.enableTests) {
+    throw Error(
+      'Tests are disabled. Please set "ENABLE_TESTS" configuration variable.'
+    )
+  }
+}

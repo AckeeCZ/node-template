@@ -5,24 +5,29 @@
 ```
 npm install
 ```
+
 Typescript compilation check is ran in `postinstall` script.
 
 `Install` sets up [Husky](https://www.npmjs.com/package/husky)'s git hooks to run prettier and lint over your changes.
 
 ## :wrench: Setup config
+
 ```bash
 export CFG_JSON_PATH="~/.env/my-project.json" # use custom path with existing json file
 ```
+
 Set custom configuration for the project. See [configuration](./config.md) for more info.
 
 ## :rocket: Run
+
 #### Production
+
 ```bash
 npm start # prod
 npm run start-lr # dev live-reload
 ```
-This starts dev server with auto-reload. Typescript type errors are reported. You can trigger build manually with `npm run build`.
 
+This starts dev server with auto-reload. Typescript type errors are reported. You can trigger build manually with `npm run build`.
 
 ## :heavy_check_mark: Test
 

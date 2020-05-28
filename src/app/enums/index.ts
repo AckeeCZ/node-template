@@ -4,5 +4,5 @@ export enum businessEnums {}
 // business model enums
 
 export default {
-    // general enums
-};
+  // general enums
+}

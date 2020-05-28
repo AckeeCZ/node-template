@@ -1,2 +1,2 @@
-import 'jest-chain';
-import 'jest-extended';
+import 'jest-extended'
+import 'jest-chain'
