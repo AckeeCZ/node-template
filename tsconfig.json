@@ -1,5 +1,6 @@
 {
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "dangerfile.ts"],
+  "exclude": ["dangerfile.ts"],
   "compilerOptions": {
     "target": "ES2019",
     "module": "CommonJS",
