@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  app:
+    build: ..
+    depends_on:
+      - postgres
+    volumes:
+      - $PWD/docker-compose-entrypoint.sh:/docker-entrypoint.sh:ro
+    entrypoint: /docker-entrypoint.sh
+  postgres:
+    image: postgres:11
+    environment:
+      - POSTGRES_DB=node_template
+      - POSTGRES_USER=node_template
+      - POSTGRES_PASSWORD=node_template
