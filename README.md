@@ -1,7 +1,7 @@
 <div align="center">
 
-
 # Node template
+
 [![Build Status](https://img.shields.io/travis/com/AckeeCZ/node-template/master.svg?style=flat-square)](https://travis-ci.com/AckeeCZ/node-template)
 [![Coverage](https://img.shields.io/codeclimate/coverage/AckeeCZ/node-template.svg?style=flat-square)](https://codeclimate.com/github/AckeeCZ/node-template)
 [![Maintainability](https://img.shields.io/codeclimate/maintainability/AckeeCZ/node-template.svg?style=flat-square)](https://codeclimate.com/github/AckeeCZ/node-template)
@@ -15,16 +15,16 @@ Ackee node back-end project template
 
 ## :rocket: Quick-start
 
- - `npm install`
- - `npm start`
- - Visit [`http://localhost:3000/`](http://localhost:3000/), [`/healthz`](http://localhost:3000/healthz) or [`/api/hello`](http://localhost:3000/api/hello)
+- `npm install`
+- `npm start`
+- Visit [`http://localhost:3000/`](http://localhost:3000/), [`/healthz`](http://localhost:3000/healthz) or [`/api/hello`](http://localhost:3000/api/hello)
 
 Want to know more? See [getting started](./docs/getting-started.md).
 
 ## :book: Further reading
 
- - [Configuration](./docs/config.md)
- - [Debugging](./docs/debug.md)
+- [Configuration](./docs/config.md)
+- [Debugging](./docs/debug.md)
 
 ## ⚖️ License
 

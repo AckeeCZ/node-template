@@ -1,3 +1,5 @@
 {
-  "*.ts": ["prettier --write", "tslint --fix", "npm run lint"]
+  "*.ts": ["prettier --write", "eslint --fix"],
+  "*.{ts,js,json,md}": "prettier --write",
+  "*": ["eclint fix", "eclint check"]
 }

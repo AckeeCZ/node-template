@@ -1,59 +1,73 @@
-import { NextFunction, Request, RequestHandler, Response, Router } from 'express';
-import { mapValues, omit, values } from 'lodash';
-import httpContext from './httpContext';
+import {
+  NextFunction,
+  Request,
+  RequestHandler,
+  Response,
+  Router,
+} from 'express'
+import { mapValues, omit, values } from 'lodash'
+import httpContext from './httpContext'
 
-type Handler = (req: Request, res: Response, next: NextFunction) => any;
-type SimpleHandler = (req: Request, res: Response) => any;
-type WriteResponse = (req: Request, res: Response, data?: any) => any;
-const writeResponse: WriteResponse = (_, res, data) => res.json(data);
+type Handler = (req: Request, res: Response, next: NextFunction) => any
+type SimpleHandler = (req: Request, res: Response) => any
+type WriteResponse = (req: Request, res: Response, data?: any) => any
+const writeResponse: WriteResponse = (_, res, data) => res.json(data)
 
 const respond = (
-    controllerHandler: SimpleHandler,
-    statusCode = 200,
-    respondFn: WriteResponse = writeResponse
+  controllerHandler: SimpleHandler,
+  statusCode = 200,
+  respondFn: WriteResponse = writeResponse
 ): Handler => async (req, res, next) => {
-    try {
-        const result = await controllerHandler(req, res);
-        res.status(statusCode);
-        return respondFn(req, res, result);
-    } catch (error) {
-        next(error);
-    }
-};
+  try {
+    const result = await controllerHandler(req, res)
+    res.status(statusCode)
+    return respondFn(req, res, result)
+  } catch (error) {
+    next(error)
+  }
+}
 
-const omitOrder = (o: any) => omit(o, ['order']);
-const omitPagination = (o: any) => omit(o, ['limit', 'offset']);
+const omitOrder = (o: any) => omit(o, ['order'])
+const omitPagination = (o: any) => omit(o, ['limit', 'offset'])
 
-const pipeMiddleware = (...middlewares: Array<RequestHandler>) => {
-    const router = Router();
-    middlewares.forEach((m) => router.use(m));
-    return router;
-};
+const pipeMiddleware = (...middlewares: RequestHandler[]) => {
+  // eslint-disable-next-line new-cap
+  const router = Router()
+  middlewares.forEach(m => router.use(m))
+  return router
+}
 
 const bindContext = (req: Request, res: Response, next: NextFunction) => {
-    req.context = httpContext({ req, res });
-    next();
-};
+  req.context = httpContext({ req, res })
+  next()
+}
 
 const meTranslate = (req: Request, res: Response, next: NextFunction) => {
-    const context = req.context || httpContext({ req, res });
+  const context = req.context || httpContext({ req, res })
 
-    if (!context.user) {
-        return next();
-    }
+  if (!context.user) {
+    return next()
+  }
 
-    const translate = (object: any): any =>
-        mapValues(object, (value: any) => {
-            if (Array.isArray(value)) {
-                return values(translate(value));
-            }
-            return value === 'me' ? context.user.id : value;
-        });
+  const translate = (object: any): any =>
+    mapValues(object, (value: any) => {
+      if (Array.isArray(value)) {
+        return values(translate(value))
+      }
+      return value === 'me' ? context.user.id : value
+    })
 
-    req.params = translate(req.params);
-    req.query = translate(req.query);
+  req.params = translate(req.params)
+  req.query = translate(req.query)
 
-    next();
-};
+  next()
+}
 
-export { respond, omitOrder, omitPagination, pipeMiddleware, bindContext, meTranslate };
+export {
+  respond,
+  omitOrder,
+  omitPagination,
+  pipeMiddleware,
+  bindContext,
+  meTranslate,
+}
