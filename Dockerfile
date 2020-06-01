@@ -7,7 +7,7 @@ RUN npm set unsafe-perm=true
 RUN npm set progress=false
 RUN npm set loglevel=error
 # now copy all relevant files
-COPY .env.jsonc package.json package-lock.json tsconfig.json jest.config.js tslint.json ./
+COPY .env.jsonc package.json package-lock.json tsconfig.json jest.config.js .eslintrc.js .eslint.tsconfig.json ./
 COPY src ./src
 # install dependencies first
 RUN npm ci
