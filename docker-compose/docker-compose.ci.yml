@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+  app:
+    image: "$DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG"
+    user: root
+    volumes:
+      - "$CI_PROJECT_DIR/output:/usr/src/app/output"
+      - "$CI_PROJECT_DIR/secrets-test.json:/usr/src/app/secrets-test.json:ro"
+    environment:
+      - NODE_PATH=.
+      - ENABLE_TESTS=true
+      - CFG_JSON_PATH=$CFG_JSON_PATH
