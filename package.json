@@ -39,7 +39,7 @@
     "@ackee/styleguide-backend-config": "^0.1.2",
     "configuru": "^0.4.0",
     "cosmas": "^2.0.0-beta.6",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.17",
     "node-healthz": "^1.0.1",
     "npm-run-series": "^1.0.1",
     "source-map-support": "^0.5.19",
