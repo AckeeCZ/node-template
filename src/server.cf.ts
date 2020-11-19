@@ -1,4 +1,4 @@
-import { Express, RequestHandler } from 'express';
+import { ErrorRequestHandler, Express, RequestHandler } from 'express';
 import * as functions from 'firebase-functions';
 import { createServer } from 'unicore';
 import config from './config';
@@ -7,7 +7,7 @@ import * as routes from './config/routes';
 // Create a Cloud Function handler based on Express' Request handler.
 // This utilizes already defined express request handlers and routers, which
 // can then be used as a CF handler.
-export const cloudify = (handler: RequestHandler) => {
+export const cloudify = (handler: RequestHandler | ErrorRequestHandler) => {
     // TODO: Types. Wait until Unicore fixes server type.
     const app = (createServer() as any) as Express;
     app.use(handler);

@@ -53,7 +53,7 @@ const createHttpContext = <User = DefaultUser>(httpContext: { req: Request; res:
             return pagination;
         },
         get order() {
-            return req.query.order;
+            return req.query.order as string;
         },
         get locale() {
             if (req && req.i18n) {
