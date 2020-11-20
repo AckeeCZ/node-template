@@ -1,5 +1,5 @@
 import { compose, Middleware } from 'compose-middleware';
-import { NextFunction, Request, Response } from 'express';
+import { ErrorRequestHandler, NextFunction, Request, RequestHandler, Response } from 'express';
 import { mapValues, omit, values } from 'lodash';
 import httpContext from './httpContext';
 
@@ -25,7 +25,8 @@ const respond = (
 const omitOrder = (o: any) => omit(o, ['order']);
 const omitPagination = (o: any) => omit(o, ['limit', 'offset']);
 
-const pipeMiddleware = (...middlewares: Array<Middleware<Request, Response>>) => compose(middlewares);
+const pipeMiddleware = (...middlewares: Array<RequestHandler | ErrorRequestHandler>) =>
+    compose(middlewares as any) as Middleware<Request, Response>;
 
 const bindContext = (req: Request, res: Response, next: NextFunction) => {
     req.context = httpContext({ req, res });

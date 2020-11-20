@@ -8,7 +8,7 @@ logger.info(safeConfig, 'Loaded config');
 // Application. Start only if port is set.
 if (config.server.port) {
     server
-        .listen(config.server.port)
+        .listenAsync(config.server.port)
         .then(() => logger.info(`Server listening. port=${config.server.port}`))
         .catch(error => logger.error({ error }, `Server failed to start. ${error}`));
 }
