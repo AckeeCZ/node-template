@@ -1,6 +1,8 @@
 version: '3.8'
 services:
   app:
+    build:
+      context: ..
     image: "$DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG"
     user: root
     volumes:
