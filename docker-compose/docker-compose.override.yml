@@ -1,8 +1,1 @@
-version: '3.8'
-services:
-  app:
-    entrypoint: ["echo", "Service app is disabled"]
-    command: ""
-  postgres:
-    ports:
-      - 5432:5432
+docker-compose.local.yml
