@@ -1,6 +1,6 @@
 # Getting started
 
-## :seedling: Install
+## 🌱 Install
 
 ```
 npm install
@@ -10,15 +10,29 @@ Typescript compilation check is ran in `postinstall` script.
 
 `Install` sets up [Husky](https://www.npmjs.com/package/husky)'s git hooks to run prettier and lint over your changes.
 
-## :wrench: Setup config
+## 🔧 Run with config
+
+You can override default configuration [`.env.jsonc`](../.env.jsonc) (which is always applied as default values) by specifying variables directly:
 
 ```bash
-export CFG_JSON_PATH="~/.env/my-project.json" # use custom path with existing json file
+SERVER_PORT=8080 npm start
 ```
 
-Set custom configuration for the project. See [configuration](./config.md) for more info.
+Or you can have a file with those overrides and specify it with `CFG_JSON_PATH` variable:
 
-## :rocket: Run
+```bash
+CFG_JSON_PATH="~/node-template-conf.jsonc" npm start
+```
+
+Or combine those two
+
+```bash
+CFG_JSON_PATH="~/node-template-conf.jsonc" SERVER_PORT=8080 npm start
+```
+
+For more information on how configuration loading works see [configuru](https://github.com/AckeeCZ/configuru) loader.
+
+## 🚀 Run
 
 #### Production
 
@@ -29,7 +43,7 @@ npm run start-lr # dev live-reload
 
 This starts dev server with auto-reload. Typescript type errors are reported. You can trigger build manually with `npm run build`.
 
-## :heavy_check_mark: Test
+## ✅ Test
 
 Jest framework is used for tests.
 
@@ -38,10 +52,9 @@ Jest framework is used for tests.
 - `npm run cover` (run tests and collect coverage)
 - `npm run ci-test` (CI tests with JUnit reporter, coverage and no snapshot generating)
 
-## :white_check_mark: Lint
+💡 You can use config overrides with tests the same way
 
-Source files are linted via [tslint](https://palantir.github.io/tslint/) with custom [configuration](https://www.npmjs.com/package/tslint-config-ackee).
-But you should not worry about that much, since most of the problems are auto-fixed with Husky.
+## ☑️ Lint
 
 ```
 npm run lint

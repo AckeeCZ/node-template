@@ -23,3 +23,5 @@ Object {
   "status": 500,
 }
 `;
+
+exports[`Template (System) Server Healthz 1`] = `"NOT_OK"`;
