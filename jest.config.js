@@ -8,6 +8,7 @@ module.exports = {
   testMatch: ['<rootDir>/src/**/*.test.ts'],
   collectCoverageFrom: ['<rootDir>/src/app/**/*.(t|j)s'],
   globalSetup: '<rootDir>/src/test/globalSetup.ts',
+  globalTeardown: '<rootDir>/src/test/globalTeardown.ts',
   setupFilesAfterEnv: ['<rootDir>/src/test/setup.ts'],
   moduleFileExtensions: ['ts', 'js', 'json', 'node'],
   modulePaths: ['<rootDir>/src/'],

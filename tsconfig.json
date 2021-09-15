@@ -12,6 +12,7 @@
     "outDir": "dist",
     "rootDir": "src",
     "strict": true,
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "useUnknownInCatchVariables": false
   }
 }

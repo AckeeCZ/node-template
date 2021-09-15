@@ -13,18 +13,17 @@ Ackee node back-end project template
 
 </div>
 
-## :rocket: Quick-start
+## 🚀 Quick-start
 
 - `npm install`
+- `npm run build`
 - `npm start`
 - Visit [`http://localhost:3000/`](http://localhost:3000/), [`/healthz`](http://localhost:3000/healthz) or [`/api/hello`](http://localhost:3000/api/hello)
 
-Want to know more? See [getting started](./docs/getting-started.md).
+## 📒 Further reading
 
-## :book: Further reading
-
-- [Configuration](./docs/config.md)
-- [Debugging](./docs/debug.md)
+- [Getting started](./docs/getting-started.md)
+- TODO App layers description
 
 ## ⚖️ License
 

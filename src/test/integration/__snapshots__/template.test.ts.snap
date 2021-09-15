@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Template (Integration) Server Healthz 1`] = `"OK"`;
