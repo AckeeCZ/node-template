@@ -1,0 +1,105 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "API Title",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.server.test/v1"
+    }
+  ],
+  "paths": {
+    "/hello": {
+      "get": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_200"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "parameters": [
+          {
+            "explode": false,
+            "in": "header",
+            "name": "lang",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/inline_object",
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_200"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "requestBodies": {
+      "inline_object": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/inline_object"
+            }
+          }
+        }
+      }
+    },
+    "schemas": {
+      "inline_response_200": {
+        "properties": {
+          "hello": {
+            "type": "string"
+          },
+          "payload": {
+            "type": "object"
+          }
+        },
+        "type": "object"
+      },
+      "inline_object": {
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      }
+    }
+  }
+}

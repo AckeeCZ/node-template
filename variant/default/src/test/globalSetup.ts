@@ -1,4 +1,4 @@
-import logger from '../app/logger'
+import logger from '../logger'
 import config, { safeConfig } from '../config'
 
 export default () => {

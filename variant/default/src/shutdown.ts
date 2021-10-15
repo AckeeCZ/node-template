@@ -1,5 +1,4 @@
 import logger from './logger'
-import server from '../server'
 
 /**
  * Handles multiple shutdown calls
@@ -14,13 +13,12 @@ let shuttingDown = false
  *  1 - caused by uncaught exception
  *  2 - error during graceful shutdown
  */
-const shutdown = (event: string, force = false, exitCode = 0) => async ({
-  error,
-  signal,
-}: {
-  error?: Error
-  signal?: NodeJS.Signals
-}) => {
+const shutdown = (
+  appShutdown: AppShutdown,
+  event: string,
+  force = false,
+  exitCode = 0
+) => async ({ error, signal }: { error?: Error; signal?: NodeJS.Signals }) => {
   logger.info(`Shutdown called! Event: ${event}, with exit code: ${exitCode}`)
 
   if (!error && !signal) return
@@ -45,32 +43,26 @@ const shutdown = (event: string, force = false, exitCode = 0) => async ({
   shuttingDown = true
 
   try {
-    // Shutdown HTTP server
-    await server.destroy()
-    // Close connections to Databases etc.
-    await Promise.all([
-      //   knex.destroy(),
-      //   redis.quit().catch((error: any) => {
-      //     logger.error(error)
-      //     redis.disconnect()
-      //   }),
-    ])
+    await appShutdown()
     logger.flush()
   } catch (error) {
-    logger.error(error)
+    logger.error(error, 'Graceful shutdown failed. Force exiting.')
     process.exit(2)
   }
   logger.info('Server shutdown gracefully')
 }
 
-export const prepareForGracefulShutdown = () => {
+/** Close everything. Close HTTP server, close database connections etc. */
+export type AppShutdown = () => Promise<void>
+
+export const prepareForGracefulShutdown = (appShutdown: AppShutdown) => {
   process.on('uncaughtException', error => {
-    void shutdown('uncaughtException', true, 1)({ error })
+    void shutdown(appShutdown, 'uncaughtException', true, 1)({ error })
   })
   process.on('SIGINT', signal => {
-    void shutdown('SIGINT')({ signal })
+    void shutdown(appShutdown, 'SIGINT')({ signal })
   })
   process.on('SIGTERM', signal => {
-    void shutdown('SIGTERM')({ signal })
+    void shutdown(appShutdown, 'SIGTERM')({ signal })
   })
 }
