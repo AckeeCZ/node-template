@@ -11,6 +11,7 @@
   },
   "scripts": {
     "install:cloudrun:rest": "ts-node src/install-cloudrun-rest.ts",
+    "install:cloudfunctions:graphql": "ts-node src/install-cloudfunctions-graphql.ts",
     "build": "tsc",
     "start": "node -r source-map-support/register dist/index.js",
     "start-lr": "tsc-watch --onSuccess \"npm run start\"",

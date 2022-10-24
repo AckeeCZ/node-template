@@ -35,6 +35,31 @@ export function addNpmScript(packageJson: PackageJson, name: string, command: st
   )
 }
 
+export function updateNpmNodeEngine(packageJson: PackageJson, nodeVersion: string) {
+  const json = {
+    ...packageJson.json(),
+    engines: {}
+  }
+  json.engines.node = nodeVersion
+  log(`> package.json.engines.node updated to version ${nodeVersion}`)
+  fs.writeFileSync(
+    path.join(...packageJson.path),
+    JSON.stringify(json, null, 2),
+    'utf-8'
+  )
+}
+
+export function updatePackageJsonMain(packageJson: PackageJson, main: string) {
+  const json = packageJson.json()
+  json.main = main
+  log(`> package.json.main updated to ${main}`)
+  fs.writeFileSync(
+    path.join(...packageJson.path),
+    JSON.stringify(json, null, 2),
+    'utf-8'
+  )
+}
+
 /**
  * Like cp, but second argument does not need to include file name
  * the name is preserved.
@@ -83,7 +108,10 @@ export function npmInit(npm: Npm) {
   npm.run(['init', '--yes'])
 }
 
-export function npmi(npm: Npm, module: string) {
+export function npmi(npm: Npm, module?: string) {
+  if (!module) {
+    return npm.run(['i'])
+  }
   const args = ['i', module]
   npm.run(args)
 }
