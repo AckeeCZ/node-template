@@ -37,7 +37,7 @@
     "usePathForSuiteName": "true"
   },
   "dependencies": {
-    "@ackee/styleguide-backend-config": "^0.1.2",
+    "@ackee/styleguide-backend-config": "^0.3.0",
     "configuru": "^0.4.0",
     "cosmas": "^3.0.7",
     "lodash": "^4.17.21",
